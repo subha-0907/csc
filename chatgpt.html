@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Scientist Portfolio</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    background:#000;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* Animated Gold Background */
+body::before{
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: radial-gradient(circle at 20% 20%, rgba(255,215,0,0.15), transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(255,215,0,0.1), transparent 40%);
+    animation: moveBg 8s infinite alternate;
+    z-index:-1;
+}
+
+@keyframes moveBg{
+    from{transform: translateY(-20px);}
+    to{transform: translateY(20px);}
+}
+
+/* Navbar */
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 10%;
+    position:fixed;
+    width:100%;
+    background:rgba(0,0,0,0.7);
+    backdrop-filter: blur(10px);
+    z-index:1000;
+}
+
+nav h2{
+    color:gold;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:20px;
+}
+
+nav ul li a{
+    color:#fff;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:gold;
+}
+
+/* Sections */
+section{
+    padding:100px 10%;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.hero{
+    text-align:center;
+}
+
+.hero h1{
+    font-size:3rem;
+}
+
+.gold{
+    color:gold;
+}
+
+.btn{
+    display:inline-block;
+    padding:12px 25px;
+    margin-top:20px;
+    border:2px solid gold;
+    color:gold;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:gold;
+    color:black;
+}
+
+/* Cards */
+.card{
+    background:rgba(255,255,255,0.05);
+    padding:20px;
+    margin:15px 0;
+    border-radius:10px;
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 20px gold;
+}
+
+/* Skills Grid */
+.skills-grid, .projects-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+}
+
+/* Contact */
+.contact a{
+    color:gold;
+    text-decoration:none;
+}
+
+/* Fade Animation */
+.fade{
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s;
+}
+
+.fade.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Responsive */
+@media(max-width:768px){
+    nav ul{
+        display:none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h2>Portfolio</h2>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <h1>Hello, I'm <span class="gold">Your Name</span></h1>
+    <h2><span id="typing"></span></h2>
+    <a href="#" class="btn" download>Download Resume</a>
+</section>
+
+<!-- About -->
+<section id="about" class="fade">
+    <h2 class="gold">About Me</h2>
+    <p>
+        I am a passionate Data Scientist specializing in machine learning,
+        data analysis, predictive modeling, and AI-driven solutions.
+        I transform complex data into actionable insights.
+    </p>
+</section>
+
+<!-- Skills -->
+<section id="skills" class="fade">
+    <h2 class="gold">Skills</h2>
+    <div class="skills-grid">
+        <div class="card">Python</div>
+        <div class="card">Machine Learning</div>
+        <div class="card">Deep Learning</div>
+        <div class="card">SQL</div>
+        <div class="card">Power BI</div>
+        <div class="card">Data Visualization</div>
+    </div>
+</section>
+
+<!-- Projects -->
+<section id="projects" class="fade">
+    <h2 class="gold">Projects</h2>
+    <div class="projects-grid">
+        <div class="card">
+            <h3>AI Prediction Model</h3>
+            <p>Built ML model with 95% accuracy.</p>
+        </div>
+        <div class="card">
+            <h3>Data Dashboard</h3>
+            <p>Interactive dashboard using Power BI.</p>
+        </div>
+        <div class="card">
+            <h3>Customer Segmentation</h3>
+            <p>Clustering model to optimize marketing.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="fade contact">
+    <h2 class="gold">Contact</h2>
+    <p>Email: yourmail@email.com</p>
+    <p>LinkedIn: <a href="#">Your LinkedIn</a></p>
+    <p>GitHub: <a href="#">Your GitHub</a></p>
+</section>
+
+<script>
+// Typing Effect
+const text = ["Data Scientist", "ML Engineer", "AI Enthusiast"];
+let count = 0;
+let index = 0;
+let currentText = "";
+let letter = "";
+
+(function type(){
+    if(count === text.length){
+        count = 0;
+    }
+    currentText = text[count];
+    letter = currentText.slice(0, ++index);
+
+    document.getElementById("typing").textContent = letter;
+    if(letter.length === currentText.length){
+        count++;
+        index = 0;
+        setTimeout(type, 1000);
+    } else{
+        setTimeout(type, 100);
+    }
+})();
+
+// Scroll Fade Animation
+const faders = document.querySelectorAll(".fade");
+
+window.addEventListener("scroll", () => {
+    const triggerBottom = window.innerHeight * 0.8;
+
+    faders.forEach(el => {
+        const boxTop = el.getBoundingClientRect().top;
+        if(boxTop < triggerBottom){
+            el.classList.add("show");
+        }
+    });
+});
+</script>
+
+</body>
+</html>
